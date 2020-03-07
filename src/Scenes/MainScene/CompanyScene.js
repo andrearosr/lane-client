@@ -11,6 +11,13 @@ const query = gql`
       color
       name
       image
+      employees {
+        id
+        name
+        color
+        image
+        email
+      }
     }
   }
 `;

@@ -1,8 +1,14 @@
 import React, { PureComponent } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  TouchableOpacity,
+} from 'react-native';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import { List, ItemData, ErrorScene } from '../../components';
+import { List, ListItem, ItemData, ErrorScene } from '../../components';
 
 const query = gql`
   query User($id: ID!) {
@@ -25,6 +31,12 @@ const query = gql`
         color
         name
         email
+        image
+      }
+      company {
+        id
+        color
+        name
         image
       }
     }
@@ -82,6 +94,13 @@ export default class UserScene extends PureComponent {
             return (
               <View>
                 <ItemData item={user} />
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>Company</Text>
+                  <TouchableOpacity onPress={() => navigation.navigate('CompanyScene', { id: user.company.id })}>
+                    <ListItem item={user.company} />
+                  </TouchableOpacity>
+                </View>
+
                 <View style={styles.section}>
                   <Text style={styles.sectionTitle}>Address</Text>
                   <Text>{streetAddress}</Text>
