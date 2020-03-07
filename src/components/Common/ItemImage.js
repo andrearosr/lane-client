@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
 });
 
 export default memo(({ item, style }) => {
-  console.log(item)
   return (
     <View style={[styles.imageWrapper, style, { borderColor: item.color }]}>
       <Image style={styles.image} source={{ uri: item.image }} />

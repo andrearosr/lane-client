@@ -1,19 +1,19 @@
 import React, { PureComponent } from 'react';
 import {
   View,
-  TouchableOpacity,
   ActivityIndicator,
-  FlatList,
   StyleSheet
 } from 'react-native';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { List } from '../../components';
 
-import { ErrorScene, ListItem } from '../../components';
+import { ErrorScene } from '../../components';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    padding: 20
   }
 });
 
@@ -46,18 +46,9 @@ export default class UsersScene extends PureComponent {
             }
 
             return (
-              <FlatList
+              <List
                 data={data.users}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate('UserScene', { id: item.id, user: item })
-                    }
-                  >
-                    <ListItem item={item} />
-                  </TouchableOpacity>
-                )}
+                onPress={(item) => navigation.navigate('UserScene', { id: item.id })}
               />
             );
           }}

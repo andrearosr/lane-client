@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import { ItemImage, ErrorScene } from '../../components';
+import { List, ItemData, ErrorScene } from '../../components';
 
 const query = gql`
   query User($id: ID!) {
@@ -28,19 +28,12 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
-  image: {
-    marginBottom: 20,
+  section: {
+    marginTop: 10,
+    paddingTop: 10,
   },
-  text: {
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  textName: {
-    fontSize: 32,
-    marginBottom: 10,
-  },
-  textEmail: {
-    fontSize: 18
+  sectionTitle: {
+    fontSize: 24,
   }
 });
 
@@ -70,13 +63,13 @@ export default class UserScene extends PureComponent {
 
             const { user } = data;
             return (
-              <React.Fragment>
-                <ItemImage item={user} style={styles.image} />
-                <View style={styles.text}>
-                  <Text style={styles.textName}>{user.name}</Text>
-                  <Text style={styles.textEmail}>{user.email}</Text>
+              <View style={styles.container}>
+                <ItemData item={user} />
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>Friends</Text>
+                  <List data={user.friends} onPress={(item) => navigation.navigate('UserScene', { id: item.id })} />
                 </View>
-              </React.Fragment>
+              </View>
             )
           }}
         </Query>
