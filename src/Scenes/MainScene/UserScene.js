@@ -81,7 +81,7 @@ export default class UserScene extends PureComponent {
     // Done (3) - include their company info, and if you tap on it you can go that CompanyScene. Re-used presentation components
 
     // Done (4) - see a list of their friends, so I can tap on them an get more info about that user.
-    // todo: 5. would be cool to make the user name and email updateable and saved ot the database, so we can let our users change their info.
+    // Done (5) - would be cool to make the user name and email updateable and saved ot the database, so we can let our users change their info.
     return (
       <View style={styles.container}>
         <Query query={query} variables={{ id }}>
