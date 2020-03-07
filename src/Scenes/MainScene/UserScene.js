@@ -26,7 +26,6 @@ const query = gql`
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    alignItems: 'center',
   },
   section: {
     marginTop: 10,
@@ -47,7 +46,7 @@ export default class UserScene extends PureComponent {
     // todo: 3. would be extra cool to include their company info, and if you tap on it you can go that CompanyScene.
     // if this is done correctly, we should be re-using components from the CompaniesScene.
 
-    // todo: 4. would be even cooler to see a list of their friends, so I can tap on them an get more info about that user.
+    // Done (4) - see a list of their friends, so I can tap on them an get more info about that user.
     // todo: 5. would be cool to make the user name and email updateable and saved ot the database, so we can let our users change their info.
     return (
       <View style={styles.container}>
@@ -63,7 +62,7 @@ export default class UserScene extends PureComponent {
 
             const { user } = data;
             return (
-              <View style={styles.container}>
+              <View>
                 <ItemData item={user} />
                 <View style={styles.section}>
                   <Text style={styles.sectionTitle}>Friends</Text>

@@ -3,6 +3,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import ItemImage from './ItemImage';
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
   image: {
     marginBottom: 20,
   },
@@ -21,12 +24,12 @@ const styles = StyleSheet.create({
 
 export default memo(({ item, style }) => {
   return (
-    <React.Fragment>
+    <View style={styles.container}>
       <ItemImage item={item} style={styles.image} />
       <View style={styles.text}>
         <Text style={styles.textName}>{item.name}</Text>
-        <Text style={styles.textEmail}>{item.email}</Text>
+        {item.email && <Text style={styles.textEmail}>{item.email}</Text>}
       </View>
-    </React.Fragment>
+    </View>
   );
 })
