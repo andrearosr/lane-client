@@ -12,6 +12,14 @@ const query = gql`
       name
       email
       image
+      address {
+        city
+        state
+        zipCode
+        country
+        streetAddress
+        secondaryAddress
+      }
       friends {
         id
         color
@@ -25,14 +33,15 @@ const query = gql`
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 20
   },
   section: {
     marginTop: 10,
-    paddingTop: 10,
+    paddingTop: 10
   },
   sectionTitle: {
     fontSize: 24,
+    marginBottom: 10
   }
 });
 
@@ -61,9 +70,25 @@ export default class UserScene extends PureComponent {
             }
 
             const { user } = data;
+            const {
+              streetAddress,
+              secondaryAddress,
+              city,
+              state,
+              zipCode,
+              country
+            } = user.address;
+
             return (
               <View>
                 <ItemData item={user} />
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>Address</Text>
+                  <Text>{streetAddress}</Text>
+                  <Text>{secondaryAddress}</Text>
+                  <Text>{city}, {state} {zipCode}</Text>
+                  <Text>{country}</Text>
+                </View>
                 <View style={styles.section}>
                   <Text style={styles.sectionTitle}>Friends</Text>
                   <List data={user.friends} onPress={(item) => navigation.navigate('UserScene', { id: item.id })} />
