@@ -30,7 +30,7 @@ const query = gql`
 
 export default class CompaniesScene extends PureComponent {
   render() {
-    // Done -  queried the graphql server for companies and displayed them here.
+    // Done (2) -  queried the graphql server for companies and displayed them here.
     const { navigation } = this.props;
 
     return (
