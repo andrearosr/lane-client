@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
 export default class CompanyScene extends PureComponent {
   render() {
     // Done (2) show the company info here.
-    // todo: 3. would be extra cool to show the employee list and make it navigate to that user on tap.
+    // Done (3) show the employee list and make it navigate to that user on tap 
+      // (technically done client-side, except the list is always empty! Not null anymore, just not sure how to filter the userss in the server)
     const { navigation } = this.props;
     const id = navigation.getParam('id');
 
@@ -60,7 +61,7 @@ export default class CompanyScene extends PureComponent {
                 <ItemData item={company} />
                 <View style={styles.section}>
                   <Text style={styles.sectionTitle}>Employees</Text>
-                  <List data={[]} onPress={(item) => navigation.navigate('UserScene', { id: item.id })} />
+                  <List data={company.employees} onPress={(item) => navigation.navigate('UserScene', { id: item.id })} />
                 </View>
               </View>
             )

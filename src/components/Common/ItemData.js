@@ -16,13 +16,15 @@ const styles = StyleSheet.create({
   textName: {
     fontSize: 32,
     marginBottom: 10,
+    textAlign: 'center'
   },
   textEmail: {
-    fontSize: 18
+    fontSize: 18,
+    textAlign: 'center'
   }
 });
 
-export default memo(({ item, style }) => {
+export default memo(({ item }) => {
   return (
     <View style={styles.container}>
       <ItemImage item={item} style={styles.image} />
