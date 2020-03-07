@@ -9,7 +9,7 @@ import {
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 
-import { ErrorScene, UserList } from '../../components';
+import { ErrorScene, ListItem } from '../../components';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +55,7 @@ export default class UsersScene extends PureComponent {
                       navigation.navigate('UserScene', { id: item.id, user: item })
                     }
                   >
-                    <UserList user={item} />
+                    <ListItem item={item} />
                   </TouchableOpacity>
                 )}
               />

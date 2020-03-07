@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { UserImage } from '../../components';
+import { ItemImage } from '../../components';
 
 const styles = StyleSheet.create({
   container: {
@@ -38,7 +38,7 @@ export default class UserScene extends PureComponent {
     // todo: 5 would be cool to make the user name and email updateable and saved ot the database, so we can let our users change their info.
     return (
       <View style={styles.container} >
-        <UserImage user={user} style={styles.image} />
+        <ItemImage item={user} style={styles.image} />
         <View style={styles.text}>
           <Text style={styles.textName}>{user.name}</Text>
           <Text style={styles.textEmail}>{user.email}</Text>

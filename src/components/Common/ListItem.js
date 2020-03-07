@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import UserImage from './UserImage';
+import ItemImage from './ItemImage';
 
 const styles = StyleSheet.create({
-  userList: {
+  container: {
     flexDirection: 'row',
     padding: 20
   },
@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
   }
 });
 
-export default memo(({ user }) => (
-  <View style={styles.userList}>
-    <UserImage user={user} style={styles.image} />
+export default memo(({ item }) => (
+  <View style={styles.container}>
+    <ItemImage item={item} style={styles.image} />
     <View style={styles.text}>
-      <Text style={styles.textName}>{user.name}</Text>
-      <Text style={styles.textEmail}>{user.email}</Text>
+      <Text style={styles.textName}>{item.name}</Text>
+      {item.email && <Text style={styles.textEmail}>{item.email}</Text>}
     </View>
   </View>
 ));
