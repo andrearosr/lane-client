@@ -7,6 +7,7 @@ import UsersScene from './UsersScene';
 import CompaniesScene from './CompaniesScene';
 import UserScene from './UserScene';
 import CompanyScene from './CompanyScene';
+import UpdateUserScene from './UpdateUserScene';
 
 const HomeScene = createBottomTabNavigator(
   {
@@ -23,7 +24,8 @@ export default createStackNavigator(
   {
     HomeScene,
     UserScene,
-    CompanyScene
+    CompanyScene,
+    UpdateUserScene
   },
   {
     initialRouteName: 'HomeScene',

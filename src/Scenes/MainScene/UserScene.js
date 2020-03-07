@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
+  Button
 } from 'react-native';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
@@ -54,6 +55,19 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     marginBottom: 10
+  },
+  updateButton: {
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#0074D9',
+    height: 30,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  updateButtonText: {
+    fontWeight: 'bold',
+    color: 'white'
   }
 });
 
@@ -93,6 +107,7 @@ export default class UserScene extends PureComponent {
             return (
               <View>
                 <ItemData item={user} />
+                <Button title="Edit User" onPress={() => navigation.navigate('UpdateUserScene', { user })} />
                 <View style={styles.section}>
                   <Text style={styles.sectionTitle}>Company</Text>
                   <TouchableOpacity onPress={() => navigation.navigate('CompanyScene', { id: user.company.id })}>
